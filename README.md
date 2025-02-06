@@ -1,6 +1,7 @@
 ## :warning: Please read these instructions carefully and entirely first
 * Clone this repository to your local machine.
 * Use your IDE of choice to complete the assignment.
+* Use Javascript or preferably Typescript to complete the assignment, other languages will not be considered unfortunately.
 * When you have completed the assignment, you need to  push your code to a public repository and send the link via email.
 * Once you reply back to the email, your assignment will be considered completed. Please make sure that you have completed the assignment and pushed all code from your local machine to the repository before you reply.
 * There is no time limit for this task - however, for guidance, it is expected to typically take around 3-4 hours.
@@ -57,6 +58,7 @@ The below is a sample with the correct values you can use to confirm your calcul
 ## Tips on what we’re looking for
 
 We value simplicity as an architectural virtue and as a development practice. Solutions should reflect the difficulty of the assigned task, and shouldn’t be overly complex. We prefer simple, well tested solutions over clever solutions. 
+We will appreciate descriptive and unambiguous names for the concepts you introduce.
 
 ### DO
 
