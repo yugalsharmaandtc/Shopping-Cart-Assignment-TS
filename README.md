@@ -59,6 +59,7 @@ The below is a sample with the correct values you can use to confirm your calcul
 
 We value simplicity as an architectural virtue and as a development practice. Solutions should reflect the difficulty of the assigned task, and shouldn’t be overly complex. We prefer simple, well tested solutions over clever solutions. 
 We will appreciate descriptive and unambiguous names for the concepts you introduce.
+Atomic commits with descriptive messages will get you extra brownie points.
 
 ### DO
 
