@@ -74,3 +74,53 @@ The below is a sample with the correct values you can use to confirm your calcul
 * ❌ Submit any form of app, such as web APIs, browser, desktop, or command-line applications.
 * ❌ Add unnecessary layers of abstraction.
 * ❌ Add unnecessary patterns/ architectural features that aren’t called for e.g. persistent storage.
+
+
+
+
+
+#--Shopping Cart Implementation
+A simple shopping cart implementation that calculates totals and handles product management.
+
+#Features
+Add products to cart with quantities
+Automatic price fetching from API
+Tax calculation (12.5%)
+Proper rounding of monetary values
+Simple and focused implementation
+
+#Installation
+1.npm install
+Testing
+2.npm test
+
+
+#Example Scripts
+The examples/ directory contains demonstration scripts showing how to use the shopping cart:
+
+#Start the price API:
+
+npm run serve-products
+
+#Run an example:
+
+1. node examples/demo.js-- Demo gives you the option to see functionality from the code itself like you can add and delete the products from the code itself
+2. node examples/input.js -- Input gives you the option to see the functionality using your given inputs and see how the cart state gets updated with your input(must try fun also) 
+Note: These example scripts are provided for demonstration purposes only and are not part of the core solution.
+
+#Design
+Simple Implementation: Focused on core shopping cart functionality without unnecessary abstractions
+Input Validation: hard validation for product IDs and quantities
+Error Handling: Clear error messages for API failures and invalid inputs
+Testing: Comprehensive tests covering core functionality
+Rounding: All values are rounded up to nearest value as per requirements
+
+#Assumptions
+
+Product IDs are case-sensitive strings
+Quantities must be positive integers
+Tax rate is fixed at 12.5%
+All monetary calculations are in the same currency
+API is available at localhost:3001
+
+#Atomic commits were not done since whole project is done in one time sitting only.
