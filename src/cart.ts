@@ -1,12 +1,17 @@
-const axios = require('axios');
+import axios from 'axios';
+import { CartState, CartItem, ApiProduct } from './types';
 
-class ShoppingCart {
-  constructor(baseUrl = 'http://localhost:3001') {
+export class ShoppingCart {
+  private items: Map<string, CartItem>;
+  private readonly baseUrl: string;
+  private readonly TAX_RATE = 0.125; // 12.5%
+
+  constructor(baseUrl: string = 'http://localhost:3001') {
     this.items = new Map();
     this.baseUrl = baseUrl;
   }
 
-  async addProduct(productId, quantity) {
+  public async addProduct(productId: string, quantity: number): Promise<CartState> {
     if (!productId || typeof productId !== 'string') {
       throw new Error('Product ID must be a non-empty string');
     }
@@ -28,32 +33,28 @@ class ShoppingCart {
       
       return this.getCartState();
     } catch (error) {
-      throw new Error(`Failed to add product: ${error.message}`);
+      throw new Error(`Failed to add product: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   }
 
-  async fetchProduct(productId) {
+  private async fetchProduct(productId: string): Promise<ApiProduct> {
     try {
-      const response = await axios.get(`${this.baseUrl}/products/${productId}`);
+      const response = await axios.get<ApiProduct>(`${this.baseUrl}/products/${productId}`);
       return response.data;
     } catch (error) {
       throw new Error(`Product not found: ${productId}`);
     }
   }
 
-  calculateTotals() {
+  private calculateTotals(): CartState {
     const items = Array.from(this.items.values());
     
-    // Calculate subtotal without rounding
     const subtotal = items.reduce(
       (sum, item) => sum + (item.price * item.quantity),
       0
     );
 
-    // Calculate tax and round up
-    const tax = this.roundUp(subtotal * 0.125); // 12.5% tax rate
-    
-    // Calculate total by adding rounded tax to subtotal
+    const tax = this.roundUp(subtotal * this.TAX_RATE);
     const total = this.roundUp(subtotal + tax);
 
     return {
@@ -63,20 +64,17 @@ class ShoppingCart {
         quantity: item.quantity,
         price: item.price
       })),
-      // Round subtotal to 2 decimal places without rounding up
       subtotal: Number(subtotal.toFixed(2)),
       tax,
       total
     };
   }
 
-  roundUp(value) {
+  private roundUp(value: number): number {
     return Math.ceil(value * 100) / 100;
   }
 
-  getCartState() {
+  public getCartState(): CartState {
     return this.calculateTotals();
   }
 }
-
-module.exports = ShoppingCart;

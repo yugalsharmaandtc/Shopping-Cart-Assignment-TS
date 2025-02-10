@@ -104,8 +104,8 @@ npm run serve-products
 
 ###Run an example:
 
-1. node examples/demo.js-- Demo gives you the option to see functionality from the code itself like you can add and delete the products from the code itself
-2. node examples/input.js -- Input gives you the option to see the functionality using your given inputs and see how the cart state gets updated with your input(must try fun also) 
+1.npm run start:demo -- Demo gives you the option to see functionality from the code itself like you can add and delete the products from the code itself
+2.  npm run start:input -- Input gives you the option to see the functionality using your given inputs and see how the cart state gets updated with your input(must try fun also) 
 Note: These example scripts are provided for demonstration purposes only and are not part of the core solution.
 
 ###Design
